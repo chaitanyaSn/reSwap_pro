@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from 'axios';
-import Display from "./display";
+import { BookContext } from "../context/context";
 
 
 const Sidebar = () => {
@@ -10,7 +10,7 @@ const Sidebar = () => {
     semester: ""
   });
 
-  const [books, setBooks] = useState([]);
+ const {setBooks}=useContext(BookContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +30,6 @@ const Sidebar = () => {
       .catch(error => alert('Error: ' + error));
   };
 
-  console.log(books);
 
   return (
     <div className="w-[25%] h-full p-4 bg-blue-100 shadow-lg">
